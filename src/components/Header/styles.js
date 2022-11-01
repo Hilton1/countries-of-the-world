@@ -15,7 +15,7 @@ background: ${({ theme }) => theme.colors.elements} ;
     cursor: pointer;
     background: transparent;
     border: none;
-    color: white;
+    color: ${({ theme }) => theme.colors.text};
 
     span {
       margin-right: 8px;
