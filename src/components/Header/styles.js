@@ -5,9 +5,14 @@ background: ${({ theme }) => theme.colors.elements} ;
   padding: 16px 80px;
   display: flex;
   justify-content: space-between;
-  h1 {
+
+  margin-bottom: 48px;
+
+  a {
     font-weight: 800;
     font-size: 24px;
+    color: ${({ theme }) => theme.colors.text};
+    text-decoration: none;
   }
   .darkMode {
     display: flex;
