@@ -7,6 +7,8 @@ background: ${({ theme }) => theme.colors.elements} ;
   justify-content: space-between;
 
   margin-bottom: 48px;
+  box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.15);
+
 
   a {
     font-weight: 800;

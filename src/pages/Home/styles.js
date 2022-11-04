@@ -17,9 +17,11 @@ export const Countries = styled.div`
 `;
 
 export const Countrie = styled.div`
+  max-width: 260px;
   width: 100%;
   background: ${({ theme }) => theme.colors.elements};
   border-radius: 8px;
+  box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.15);
 
   a {
     color: ${({ theme }) => theme.colors.text};

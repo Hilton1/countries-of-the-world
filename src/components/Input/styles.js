@@ -16,6 +16,9 @@ export const Container = styled.div`
     font-size: 14px;
     border: none;
 
+    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.15);
+
+
     ::placeholder {
       color: ${({ theme }) => theme.colors.input};
     }

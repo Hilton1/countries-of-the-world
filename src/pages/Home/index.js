@@ -41,6 +41,66 @@ export default function Home() {
             </div>
           </Link>
         </Countrie>
+        <Countrie>
+          <Link to="/brasil">
+            <img src="https://www.gov.br/planalto/pt-br/conheca-a-presidencia/acervo/simbolos-nacionais/bandeira/bandeiragrande.jpg" alt="Brasil" />
+            <div className="content">
+              <h1>Brasil</h1>
+              <div className="population">
+                <b>Population: </b>
+                <p>206,135,893</p>
+              </div>
+              <div className="region">
+                <b>Region: </b>
+                <p>Americas</p>
+              </div>
+              <div className="capital">
+                <b>Capital: </b>
+                <p>Brasília</p>
+              </div>
+            </div>
+          </Link>
+        </Countrie>
+        <Countrie>
+          <Link to="/brasil">
+            <img src="https://www.gov.br/planalto/pt-br/conheca-a-presidencia/acervo/simbolos-nacionais/bandeira/bandeiragrande.jpg" alt="Brasil" />
+            <div className="content">
+              <h1>Brasil</h1>
+              <div className="population">
+                <b>Population: </b>
+                <p>206,135,893</p>
+              </div>
+              <div className="region">
+                <b>Region: </b>
+                <p>Americas</p>
+              </div>
+              <div className="capital">
+                <b>Capital: </b>
+                <p>Brasília</p>
+              </div>
+            </div>
+          </Link>
+        </Countrie>
+        <Countrie>
+          <Link to="/brasil">
+            <img src="https://www.gov.br/planalto/pt-br/conheca-a-presidencia/acervo/simbolos-nacionais/bandeira/bandeiragrande.jpg" alt="Brasil" />
+            <div className="content">
+              <h1>Brasil</h1>
+              <div className="population">
+                <b>Population: </b>
+                <p>206,135,893</p>
+              </div>
+              <div className="region">
+                <b>Region: </b>
+                <p>Americas</p>
+              </div>
+              <div className="capital">
+                <b>Capital: </b>
+                <p>Brasília</p>
+              </div>
+            </div>
+          </Link>
+        </Countrie>
       </Countries>
     </Form>
   );

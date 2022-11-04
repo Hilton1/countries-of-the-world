@@ -6,7 +6,7 @@ export default styled.select`
   background: ${({ theme }) => theme.colors.elements};
   border: none;
   color: ${({ theme }) => theme.colors.text};
-  box-shadow: 0px 2px 9px rgba(0, 0, 0, 0.0532439);
+  box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.15);
   border-radius: 5px;
   font-size: 14px;
   line-height: 8px;
