@@ -23,4 +23,16 @@ export const Container = styled.div`
       color: ${({ theme }) => theme.colors.input};
     }
   }
+
+  @media(max-width: 850px) {
+    input {
+      margin-bottom: 40px;
+    }
+  }
+
+  @media(max-width: 660px) {
+    input {
+      max-width: 340px;
+    }
+  }
 `;

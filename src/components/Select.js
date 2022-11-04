@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export default styled.select`
   width: 200px;
-  padding: 18px 24px;
+  height: 48px;
+  padding: 8px 24px;
   background: ${({ theme }) => theme.colors.elements};
   border: none;
   color: ${({ theme }) => theme.colors.text};

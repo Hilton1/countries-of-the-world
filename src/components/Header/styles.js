@@ -28,4 +28,15 @@ background: ${({ theme }) => theme.colors.elements} ;
       margin-right: 8px;
     }
   }
+
+  @media(max-width: 660px) {
+    padding: 16px 30px;
+
+    a {
+      font-size: 14px;
+    }
+    .darkMode {
+      font-size: 14px;
+    }
+  }
 `;
