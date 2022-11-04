@@ -6,7 +6,6 @@ import { Container } from './styles';
 export default function Header({ onToggleTheme }) {
   return (
     <Container>
-
       <Link to="/">Where in the world?</Link>
       <button className="darkMode" onClick={onToggleTheme} type="button">
         <span className="material-icons">dark_mode</span>
