@@ -60,13 +60,15 @@ export default function Countrie() {
           </div>
 
           <div className="border_coutries_container">
-            <b>Border Countries:</b>
-            <Link to="/argentina">Argentina</Link>
-            <Link to="/argentina">Argentina</Link>
-            <Link to="/argentina">Argentina</Link>
-            <Link to="/argentina">Argentina</Link>
-            <Link to="/argentina">Argentina</Link>
-            <Link to="/argentina">Argentina</Link>
+            <p>Border Countries:</p>
+            <div className="border_countries">
+              <Link to="/argentina">Argentina</Link>
+              <Link to="/argentina">Argentina</Link>
+              <Link to="/argentina">Argentina</Link>
+              <Link to="/argentina">Argentina</Link>
+              <Link to="/argentina">Argentina</Link>
+              <Link to="/argentina">Argentina</Link>
+            </div>
           </div>
         </div>
       </Content>
