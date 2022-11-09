@@ -49,7 +49,7 @@ export default function Home() {
                 <h1>{country.name.common}</h1>
                 <div className="population">
                   <b>Population: </b>
-                  <p>{country.population}</p>
+                  <p>{country.population.toLocaleString('pt-BR')}</p>
                 </div>
                 <div className="region">
                   <b>Region: </b>
