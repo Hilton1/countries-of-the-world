@@ -1,14 +1,22 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Form, Header, Countries, Countrie,
+  Container, Header, Countries, Countrie, InputContainer,
 } from './styles';
 
-import Input from '../../components/Input';
 import Select from '../../components/Select';
 
 export default function Home() {
   const [countries, setCountries] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filteredCountries = useMemo(() => countries.filter((country) => (
+    country.name.common.toLowerCase().includes(searchTerm.toLowerCase())
+  )), [countries, searchTerm]);
+
+  function handleChangeSerachTerm(event) {
+    setSearchTerm(event.target.value);
+  }
 
   useEffect(() => {
     async function loadCountries() {
@@ -25,14 +33,24 @@ export default function Home() {
     }
 
     loadCountries();
-  }, [countries]);
+  }, []);
 
   return (
-    <Form>
+    <Container>
       <Header>
-        <Input type="text" placeholder="Search for a country…" />
+        <InputContainer>
+          <span className="material-icons">
+            search
+          </span>
+          <input
+            type="text"
+            placeholder="Search for a country..."
+            value={searchTerm}
+            onChange={handleChangeSerachTerm}
+          />
+        </InputContainer>
         <Select>
-          <option value="a" selected disabled>Filter by region</option>
+          <option value="" selected disabled>Filter by region</option>
           <option value="africa">Africa</option>
           <option value="america">America</option>
           <option value="asia">Asia</option>
@@ -41,7 +59,7 @@ export default function Home() {
         </Select>
       </Header>
       <Countries>
-        {countries.map((country) => (
+        {filteredCountries.map((country) => (
           <Countrie key={country.name.common}>
             <Link to={`/${country.name.common}`}>
               <img src={country.flags.png} alt={country.name.common} />
@@ -65,6 +83,6 @@ export default function Home() {
         ))}
 
       </Countries>
-    </Form>
+    </Container>
   );
 }
