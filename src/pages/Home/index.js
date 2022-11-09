@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Form, Header, Countries, Countrie,
@@ -7,6 +8,25 @@ import Input from '../../components/Input';
 import Select from '../../components/Select';
 
 export default function Home() {
+  const [countries, setCountries] = useState([]);
+
+  useEffect(() => {
+    async function loadCountries() {
+      try {
+        const response = await fetch(
+          'https://restcountries.com/v3.1/all',
+        );
+
+        const json = await response.json();
+        setCountries(json);
+      } catch (error) {
+        console.log('error', error);
+      }
+    }
+
+    loadCountries();
+  }, [countries]);
+
   return (
     <Form>
       <Header>
@@ -21,86 +41,29 @@ export default function Home() {
         </Select>
       </Header>
       <Countries>
-        <Countrie>
-          <Link to="/brasil">
-            <img src="https://www.gov.br/planalto/pt-br/conheca-a-presidencia/acervo/simbolos-nacionais/bandeira/bandeiragrande.jpg" alt="Brasil" />
-            <div className="content">
-              <h1>Brasil</h1>
-              <div className="population">
-                <b>Population: </b>
-                <p>206,135,893</p>
+        {countries.map((country) => (
+          <Countrie key={country.name.common}>
+            <Link to={`/${country.name.common}`}>
+              <img src={country.flags.png} alt={country.name.common} />
+              <div className="content">
+                <h1>{country.name.common}</h1>
+                <div className="population">
+                  <b>Population: </b>
+                  <p>{country.population}</p>
+                </div>
+                <div className="region">
+                  <b>Region: </b>
+                  <p>{country.region}</p>
+                </div>
+                <div className="capital">
+                  <b>Capital: </b>
+                  <p>{country.capital}</p>
+                </div>
               </div>
-              <div className="region">
-                <b>Region: </b>
-                <p>Americas</p>
-              </div>
-              <div className="capital">
-                <b>Capital: </b>
-                <p>Brasília</p>
-              </div>
-            </div>
-          </Link>
-        </Countrie>
-        <Countrie>
-          <Link to="/brasil">
-            <img src="https://www.gov.br/planalto/pt-br/conheca-a-presidencia/acervo/simbolos-nacionais/bandeira/bandeiragrande.jpg" alt="Brasil" />
-            <div className="content">
-              <h1>Brasil</h1>
-              <div className="population">
-                <b>Population: </b>
-                <p>206,135,893</p>
-              </div>
-              <div className="region">
-                <b>Region: </b>
-                <p>Americas</p>
-              </div>
-              <div className="capital">
-                <b>Capital: </b>
-                <p>Brasília</p>
-              </div>
-            </div>
-          </Link>
-        </Countrie>
-        <Countrie>
-          <Link to="/brasil">
-            <img src="https://www.gov.br/planalto/pt-br/conheca-a-presidencia/acervo/simbolos-nacionais/bandeira/bandeiragrande.jpg" alt="Brasil" />
-            <div className="content">
-              <h1>Brasil</h1>
-              <div className="population">
-                <b>Population: </b>
-                <p>206,135,893</p>
-              </div>
-              <div className="region">
-                <b>Region: </b>
-                <p>Americas</p>
-              </div>
-              <div className="capital">
-                <b>Capital: </b>
-                <p>Brasília</p>
-              </div>
-            </div>
-          </Link>
-        </Countrie>
-        <Countrie>
-          <Link to="/brasil">
-            <img src="https://www.gov.br/planalto/pt-br/conheca-a-presidencia/acervo/simbolos-nacionais/bandeira/bandeiragrande.jpg" alt="Brasil" />
-            <div className="content">
-              <h1>Brasil</h1>
-              <div className="population">
-                <b>Population: </b>
-                <p>206,135,893</p>
-              </div>
-              <div className="region">
-                <b>Region: </b>
-                <p>Americas</p>
-              </div>
-              <div className="capital">
-                <b>Capital: </b>
-                <p>Brasília</p>
-              </div>
-            </div>
-          </Link>
-        </Countrie>
+            </Link>
+          </Countrie>
+        ))}
+
       </Countries>
     </Form>
   );
