@@ -14,6 +14,10 @@ export default function Home() {
     country.name.common.toLowerCase().includes(searchTerm.toLowerCase())
   )), [countries, searchTerm]);
 
+  filteredCountries.sort((a, b) => (
+    a.translations.por.common < b.translations.por.common ? -1 : 0
+  ));
+
   function handleChangeSerachTerm(event) {
     setSearchTerm(event.target.value);
   }
@@ -62,9 +66,9 @@ export default function Home() {
         {filteredCountries.map((country) => (
           <Countrie key={country.name.common}>
             <Link to={`/${country.name.common}`}>
-              <img src={country.flags.png} alt={country.name.common} />
+              <img src={country.flags.png} alt={country.translations.por.common} />
               <div className="content">
-                <h1>{country.name.common}</h1>
+                <h1>{country.translations.por.common}</h1>
                 <div className="population">
                   <b>Population: </b>
                   <p>{country.population.toLocaleString('pt-BR')}</p>
