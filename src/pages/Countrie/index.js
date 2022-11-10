@@ -1,7 +1,11 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Container, Header, Content } from './styles';
 
 export default function Countrie() {
+  const { id } = useParams();
+
+  console.log(id);
+
   return (
     <Container>
       <Header>

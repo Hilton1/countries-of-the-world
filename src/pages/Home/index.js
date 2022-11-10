@@ -9,25 +9,28 @@ import Select from '../../components/Select';
 export default function Home() {
   const [countries, setCountries] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [region, setRegion] = useState('');
 
   const filteredCountries = useMemo(() => countries.filter((country) => (
-    country.name.common.toLowerCase().includes(searchTerm.toLowerCase())
+    country.translations.por.common.toLowerCase().includes(searchTerm.toLowerCase())
   )), [countries, searchTerm]);
 
   filteredCountries.sort((a, b) => (
     a.translations.por.common < b.translations.por.common ? -1 : 0
   ));
 
-  function handleChangeSerachTerm(event) {
-    setSearchTerm(event.target.value);
-  }
-
   useEffect(() => {
     async function loadCountries() {
       try {
-        const response = await fetch(
+        let response = await fetch(
           'https://restcountries.com/v3.1/all',
         );
+
+        if (region) {
+          response = await fetch(
+            `https://restcountries.com/v3.1/region/${region}`,
+          );
+        }
 
         const json = await response.json();
         setCountries(json);
@@ -37,7 +40,7 @@ export default function Home() {
     }
 
     loadCountries();
-  }, []);
+  }, [region]);
 
   return (
     <Container>
@@ -48,13 +51,16 @@ export default function Home() {
           </span>
           <input
             type="text"
-            placeholder="Search for a country..."
+            placeholder="Pesquise pelo país..."
             value={searchTerm}
-            onChange={handleChangeSerachTerm}
+            onChange={(event) => setSearchTerm(event.target.value)}
           />
         </InputContainer>
-        <Select>
-          <option value="" selected disabled>Filter by region</option>
+        <Select
+          value={region}
+          onChange={(event) => setRegion(event.target.value)}
+        >
+          <option value="">Filtrar por região</option>
           <option value="africa">Africa</option>
           <option value="america">America</option>
           <option value="asia">Asia</option>
@@ -70,11 +76,11 @@ export default function Home() {
               <div className="content">
                 <h1>{country.translations.por.common}</h1>
                 <div className="population">
-                  <b>Population: </b>
+                  <b>População: </b>
                   <p>{country.population.toLocaleString('pt-BR')}</p>
                 </div>
                 <div className="region">
-                  <b>Region: </b>
+                  <b>Região: </b>
                   <p>{country.region}</p>
                 </div>
                 <div className="capital">
