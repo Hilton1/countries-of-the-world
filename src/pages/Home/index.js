@@ -85,7 +85,7 @@ export default function Home() {
                 </div>
                 <div className="capital">
                   <b>Capital: </b>
-                  <p>{country.capital}</p>
+                  <p>{country.capital?.map((name) => (country.capital.length <= 1 ? name : `${name}, `))}</p>
                 </div>
               </div>
             </Link>
