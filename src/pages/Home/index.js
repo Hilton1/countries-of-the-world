@@ -11,29 +11,27 @@ export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
   const [region, setRegion] = useState('');
 
-  const filteredCountries = useMemo(() => countries.filter((country) => (
+  const filteredCountriesBySearchTerm = useMemo(() => countries.filter((country) => (
     country.translations.por.common.toLowerCase().includes(searchTerm.toLowerCase())
   )), [countries, searchTerm]);
 
-  filteredCountries.sort((a, b) => (
+  filteredCountriesBySearchTerm.sort((a, b) => (
     a.translations.por.common < b.translations.por.common ? -1 : 0
   ));
 
   useEffect(() => {
     async function loadCountries() {
       try {
-        let response = await fetch(
+        const response = await fetch(
           'https://restcountries.com/v3.1/all',
         );
 
-        if (region) {
-          response = await fetch(
-            `https://restcountries.com/v3.1/region/${region}`,
-          );
-        }
-
         const json = await response.json();
-        setCountries(json);
+        const filteredCountriesByRegion = json.filter((country) => (
+          country.region.toLowerCase().includes(region.toLowerCase())
+        ));
+
+        setCountries(filteredCountriesByRegion);
       } catch (error) {
         console.log('error', error);
       }
@@ -69,7 +67,7 @@ export default function Home() {
         </Select>
       </Header>
       <Countries>
-        {filteredCountries.map((country) => (
+        {filteredCountriesBySearchTerm.map((country) => (
           <Countrie key={country.name.common}>
             <Link to={`/${country.name.common}`}>
               <img src={country.flags.png} alt={country.translations.por.common} />
