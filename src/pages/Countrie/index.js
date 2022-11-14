@@ -20,9 +20,8 @@ export default function Countrie() {
         ));
         setAllCountries(json);
         setCountryObject(countryFiltered);
-        console.log(countryFiltered);
       } catch (error) {
-        console.log('error', error);
+        // console.log('error', error);
       }
     }
     loadCountry();
